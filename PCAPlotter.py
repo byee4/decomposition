@@ -28,11 +28,15 @@ class _PCAPlotter():
         ----------
         data : pandas.DataFrame
             A table of gene expression in the format (genes, samples)
-        cmap : matplotlib colormap
+        colors : pandas.Dataframe
+            A table defining the color and condition for each sample name
+        prcomp : pandas.DataFrame
+        source : pandas.DataFrame
+
         """
         self.data = data
         self.colors = colors
-        self.prcomp, self.smusher = self._fit_transform()
+        self.prcomp = self._fit_transform()
         self.source = None
         self.ax = ax
 
@@ -41,7 +45,7 @@ class _PCAPlotter():
         smusher = PCA()
         prcomp = smusher.fit_transform(self.data.T)
         prcomp = pd.DataFrame(prcomp, index=self.data.columns)
-        return prcomp, smusher
+        return prcomp
 
     def _matplotlib(self, cmap='Purples'):
         """
@@ -55,31 +59,35 @@ class _PCAPlotter():
         """
         if self.ax is None:
             self.ax = plt.gca()
-        self.ax.scatter(self.prcomp[0], self.prcomp[1], c=self.colors, cmap=cmap)
-
+        cmap = plt.get_cmap(cmap)
+        for c in set(self.colors['condition']):
+            indices = self.prcomp.ix[self.colors[self.colors['condition'] == c].index]
+            color = self.colors[self.colors['condition'] == c]['color']
+            rgbs = [cmap(n) for n in color]
+            self.ax.scatter(indices[0], indices[1], label=c, color=rgbs)
     def _bokeh(self):
         self.source = ColumnDataSource(
             data=dict(
                 x=self.prcomp[0],
                 y=self.prcomp[1],
                 idx=self.prcomp.index,
-                fill_color=self.colors,
+                fill_color=self.colors['color'],
             )
         )
+
         self.ax.scatter('x', 'y', radius=0.1,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
-
     def set_color(self, colors):
-        self.source.data['fill_color'] = colors
+        self.source.data['fill_color'] = colors['color']
 
-    def plot(self, bokeh=False, ax=None):
+    def plot(self, bokeh=False, cmap=None):
         if bokeh:
             self._bokeh()
         else:
-            self._matplotlib()
+            self._matplotlib(cmap)
 
-def pcaplot(data, colors=None, ax=None, bokeh=False):
+def pcaplot(data, cmap, colors=None, ax=None, bokeh=False):
     plotter = _PCAPlotter(data, colors, ax)
-    plotter.plot(bokeh=bokeh)
+    plotter.plot(bokeh=bokeh, cmap=cmap)
     return plotter
