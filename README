@@ -1,0 +1,4 @@
+usage:
+
+python PCA_runner.py -l2 -f -rpkm -i featureCounts.txt -o pca.png -c conditions.tsv -cc 'treatmenet' -pc
+
