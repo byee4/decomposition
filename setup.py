@@ -24,11 +24,11 @@ setup(
         "License :: OSI Approved :: BSD License",
     ],
     install_requires=[
-        'numpy',
-        'pandas',
-        'matplotlib',
-        'sklearn',
-        'seaborn',
-        'bokeh'
+        'numpy>=1.10',
+        'pandas>=0.16',
+        'matplotlib>=1.5',
+        'sklearn>=0.18',
+        'seaborn>=0.7',
+        'bokeh>=10.0'
     ]
 )
