@@ -27,7 +27,7 @@ setup(
         'numpy>=1.10',
         'pandas>=0.16',
         'matplotlib>=1.5',
-        'sklearn>=0.17',
+        'sklearn',
         'seaborn>=0.7',
         'bokeh>=0.10.0'
     ]
