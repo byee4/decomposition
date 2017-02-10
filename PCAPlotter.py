@@ -3,14 +3,14 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+# import seaborn as sns
 from sklearn.decomposition import PCA
 
-from bokeh.io import push_notebook, show, output_notebook # for plotting inline
-from bokeh.plotting import figure, output_file
+# from bokeh.io import push_notebook, show, output_notebook # for plotting inline
+# from bokeh.plotting import figure, output_file
 # from bokeh.plotting import Figure, show, output_file # for saving to file
-from ipywidgets import interact
-from bokeh.models import HoverTool
+# from ipywidgets import interact
+# from bokeh.models import HoverTool
 from bokeh.models import ColumnDataSource
 
 __all__ = []
