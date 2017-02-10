@@ -29,6 +29,6 @@ setup(
         'matplotlib>=1.5',
         'sklearn>=0.18',
         'seaborn>=0.7',
-        'bokeh>=10.0'
+        'bokeh>=0.10.0'
     ]
 )
