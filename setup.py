@@ -17,7 +17,6 @@ setup(
     license = "BSD",
     keywords = "clustering",
     url = "http://github.com/byee4/clustering",
-    packages=['clustering'],
     long_description=read('README'),
     classifiers=[
         "Development Status :: 3 - Alpha",
