@@ -3,6 +3,7 @@ import matplotlib
 matplotlib.use('Agg')
 import sys
 import os
+import random
 import numpy as np
 import seaborn as sns
 import pandas as pd
@@ -23,10 +24,20 @@ __updated__ = '2015-12-19'
 
 def counts_to_rpkm(df):
     """
-    calculates and returns counts normalized by gene length and seq depth
-    :param df: featureCounts counts.txt file
-    :return: matrix of rpkms
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        featureCounts table formatted by default as having the following
+        columns preceding expression data:
+
+        Geneid	Chr	Start	End	Strand	Length  **expression
+
+    Returns
+    -------
+    pandas.DataFrame containing rpkm
     """
+
     counts = df.ix[:, 5:]
     lengths = df['Length']
     mapped_reads = counts.sum()
@@ -36,32 +47,58 @@ def counts_to_rpkm(df):
 def rgb_to_hex(rgb):
     """
     Returns list of html hex codes for each rgb code in rgb list
-    :param rgb: list of rgb
-    :return: list of hex
+
+    Parameters
+    ----------
+    rgb : list
+        list of RGB values
+
+    Returns
+    -------
+    list of html hex values
     """
-    hexcolors = ['#%02x%02x%02x' % (c[0] * 255, c[1] * 255, c[2] * 255) for c in rgb]  # rgb to hex
+    hexcolors = ['#%02x%02x%02x' % (c[0] * 255, c[1] * 255, c[2] * 255) for c in rgb]
     return hexcolors
 
 
 def expr_to_hex(expr, cmap='Purples', is_norm=True):
     """
-    From a list of expression values, return a list of html hex values
-    :param expr: list of expression values
-    :param cmap: colormapping
-    :param is_norm: normalize expression 0-1
-    :return: list of hex
+    From a list of expression values, return a list of html hex values.
+
+    Parameters
+    ----------
+    expr : list
+        list of positive expression values
+    cmap : basestring
+        colormap string
+    is_norm : Boolean
+        scales to max of 1 if true
+
+    Returns
+    -------
+    list of hex corresponding to expression values
     """
-    cmap = plt.get_cmap(cmap)
-
-    if is_norm:
-        norm = [float(i) / max(expr) for i in expr]  # normalize expr val [0-1]
-    else:
-        norm = expr
-
-    rgbs = [cmap(color) for color in norm]  # add color
+    rgbs = expr_to_rgb(expr, cmap, is_norm)
     return rgb_to_hex(rgbs)
 
+
 def expr_to_rgb(expr, cmap='Purples', is_norm=True):
+    """
+    From a list of expression values, return a list of rgb values.
+
+    Parameters
+    ----------
+    expr : list
+        list of positive expression values
+    cmap : basestring
+        colormap string
+    is_norm : Boolean
+        scales to max of 1 if true
+
+    Returns
+    -------
+    list of rgb corresponding to expression values
+    """
     cmap = plt.get_cmap(cmap)
 
     if is_norm:
@@ -77,17 +114,24 @@ def color_by_condition(df, col_string):
     Takes df of conditions (rows of samples, cols of conditions)
     and returns a list of colors matching each distinct condition.
 
-    :param df: pandas DataFrame
-    :param col_string: name of column specifying the condition
-    :return: list of colors associated with each distinct condition
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        table of samples as rows, conditions as columns
+    col_string : basestring
+        column for which to map colors to
+    Returns
+    -------
+    dictionary of {sample:{color:COLOR, condition:CONDITION}, } for each sample
+    for each condition in df[col_string]
     """
+
     max_conditions = set(df[col_string])
-    # colors = sns.color_palette("hls", (len(max_conditions)))
     colormap = {}
     c = 1
     for condition in max_conditions:
         colormap[condition] = {
-            'color':c, # colors[c],
+            'color':c,
             'condition':condition
         }
         c+=1
@@ -96,13 +140,37 @@ def color_by_condition(df, col_string):
 
 def subset(df, subset_file):
     """
-    returns a dataframe subset given a file containing a list of indices
-    :param df: dataframe of gene expression values
-    :param subset_file: file of genes to subset, line delimited
-    :return: dataframe
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        table of gene expression values
+    subset_file : file
+        line-delimited file of gene names or ids.
+    Returns
+    -------
+    pandas.DataFrame subset
     """
+
     genes = [gene.strip() for gene in open(subset_file, 'r')]
     return df.loc[genes, :].dropna(axis=0)
+
+def generate_hex(num_to_generate):
+    """
+
+    Parameters
+    ----------
+    num_to_generate : int
+        number of hex to generate
+
+    Returns
+    -------
+    list of hex colors
+    """
+    hexes = []
+    for i in range(0,num_to_generate):
+        hexes.append('#' + ''.join([random.choice('0123456789ABCDEF') for x in range(6)]))
+    return hexes
 
 def main(argv=None):  # IGNORE:C0111
     '''Command line options.'''
@@ -155,8 +223,7 @@ def main(argv=None):  # IGNORE:C0111
     """ read in counts file """
     counts = pd.read_table(counts_file, index_col=0, comment='#')
 
-
-    """ featureCounts """
+    """ trim & transform featureCounts table """
     if is_featureCounts:
         if is_rpkm:
             counts = counts_to_rpkm(counts)
@@ -176,10 +243,8 @@ def main(argv=None):  # IGNORE:C0111
             colors[key] = {'color': value / max(expr), 'condition': 'expression'}
 
     elif conditions_file and os.path.exists(conditions_file): # color by condition
-        flatui = ["#9b59b6", "#3498db", "#95a5a6", "#e74c3c", "#34495e",
-                  "#2ecc71"] # hardcoded for now..
-        sns.set_palette(flatui)
-        cmap = ListedColormap(flatui)
+        hexes = generate_hex(counts.shape[1]) #
+        cmap = ListedColormap(hexes)
         conditions_df = pd.read_table(
             conditions_file,
             index_col=0
@@ -190,11 +255,10 @@ def main(argv=None):  # IGNORE:C0111
             colors[col] = {'color': 'blue', 'condition': 'condition'}
 
     colors = pd.DataFrame(colors).T
-    colors.to_csv('examples/colors.txt',sep='\t')
+
     """ do pca on select genes only """
     if subset_file and os.path.exists(subset_file):
         counts = subset(counts, subset_file)
-
 
     """ removes rows whos sum (reads or rpkm) < cutoff """
     if sum_cutoff > 0:

@@ -3,14 +3,7 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-# import seaborn as sns
 from sklearn.decomposition import PCA
-
-# from bokeh.io import push_notebook, show, output_notebook # for plotting inline
-# from bokeh.plotting import figure, output_file
-# from bokeh.plotting import Figure, show, output_file # for saving to file
-# from ipywidgets import interact
-# from bokeh.models import HoverTool
 from bokeh.models import ColumnDataSource
 
 __all__ = []
@@ -21,7 +14,7 @@ __updated__ = '2015-12-19'
 
 class _PCAPlotter():
 
-    def __init__(self, data, colors, ax):
+    def __init__(self, data, colors):
         """
 
         Parameters
@@ -31,42 +24,44 @@ class _PCAPlotter():
         colors : pandas.Dataframe
             A table defining the color and condition for each sample name
         prcomp : pandas.DataFrame
-        source : pandas.DataFrame
+            A table of pc components
+        source : bokeh.models.ColumnDataSource
+            Object which allows set_color() method to interactively update
+            colors in bokeh.
+        ax : matplotlib.axes._subplots.AxesSubplot
 
         """
         self.data = data
         self.colors = colors
         self.prcomp = self._fit_transform()
-        self.source = None
-        self.ax = ax
+        self.source = self._columnsource()
 
     def _fit_transform(self):
-        """Transforms the expression data to principal component space"""
+        """
+        Transforms the expression data to principal component space.
+
+        Returns
+        -------
+        prcomp : pandas.DataFrame
+            table containing principle components ordered by variance
+        """
+
         smusher = PCA()
         prcomp = smusher.fit_transform(self.data.T)
         prcomp = pd.DataFrame(prcomp, index=self.data.columns)
         return prcomp
 
-    def _matplotlib(self, cmap='Purples'):
+    def _columnsource(self):
         """
-        plots 2d PCA
 
-        :param df: dataframe[gene,sample]
-        :param output_file: output .png/.jpg/.svg
-        :param colors: list of floats corresponding to how we want to color points
-        :param cmap: colormap
-        :return: dataframe of prcomps
+        Returns
+        -------
+        ColumnDataSource : bokeh.models.ColumnDataSource
+            Object which allows set_color() method to
+            interactively update colors in bokeh.
         """
-        if self.ax is None:
-            self.ax = plt.gca()
-        cmap = plt.get_cmap(cmap)
-        for c in set(self.colors['condition']):
-            indices = self.prcomp.ix[self.colors[self.colors['condition'] == c].index]
-            color = self.colors[self.colors['condition'] == c]['color']
-            rgbs = [cmap(n) for n in color]
-            self.ax.scatter(indices[0], indices[1], label=c, color=rgbs)
-    def _bokeh(self):
-        self.source = ColumnDataSource(
+
+        return ColumnDataSource(
             data=dict(
                 x=self.prcomp[0],
                 y=self.prcomp[1],
@@ -75,19 +70,98 @@ class _PCAPlotter():
             )
         )
 
-        self.ax.scatter('x', 'y', radius=0.1,
+    def _matplotlib(self, cmap='Purples', ax=None):
+        """
+
+        Parameters
+        ----------
+        cmap : basestring
+            colormap string
+        ax : matplotlib.axes._subplots.AxesSubplot
+            subplot axes
+
+        Returns
+        -------
+
+        """
+        if ax is None:
+            ax = plt.gca()
+        cmap = plt.get_cmap(cmap)
+        for c in set(self.colors['condition']):
+            indices = self.prcomp.ix[self.colors[self.colors['condition'] == c].index]
+            color = self.colors[self.colors['condition'] == c]['color']
+            rgbs = [cmap(n) for n in color]
+            ax.scatter(indices[0], indices[1], label=c, color=rgbs)
+    def _bokeh(self, ax):
+        """
+
+        Parameters
+        ----------
+        ax : bokeh.plotting.figure.Figure
+
+        Returns
+        -------
+
+        """
+        ax.scatter('x', 'y', radius=0.1,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
     def set_color(self, colors):
+        """
+        Updates self.ColumnDataSource 'fill_color' column to interactively
+        change point colors.
+
+        Parameters
+        ----------
+        colors : pandas.DataFrame
+            Table describing samples as row indices, 'condition' and
+            corresponding 'color' as columns
+
+        Returns
+        -------
+
+        """
         self.source.data['fill_color'] = colors['color']
 
-    def plot(self, bokeh=False, cmap=None):
+    def plot(self, bokeh=False, cmap=None, ax=None):
+        """
+
+        Parameters
+        ----------
+        bokeh : Boolean
+            True if plotting bokeh figure, else matplotlib axes
+        cmap : colormap string
+        ax : matplotlib.axes._subplots.AxesSubplot or bokeh.plotting.figure.Figure
+
+        Returns
+        -------
+
+        """
         if bokeh:
-            self._bokeh()
+            self._bokeh(ax)
         else:
-            self._matplotlib(cmap)
+            self._matplotlib(cmap, ax)
 
 def pcaplot(data, cmap, colors=None, ax=None, bokeh=False):
-    plotter = _PCAPlotter(data, colors, ax)
-    plotter.plot(bokeh=bokeh, cmap=cmap)
+    """
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        table containing elements as rows, pc as cols
+    cmap : basestring
+        colormap string
+    colors : pandas.DataFrame
+        A table defining the color and condition for each sample name
+    ax : matplotlib.axes._subplots.AxesSubplot or bokeh.plotting.figure.Figure
+    bokeh : Boolean
+        True if plotting bokeh figure, else matplotlib axes
+
+    Returns
+    -------
+    _PCAPlotter object
+
+    """
+    plotter = _PCAPlotter(data, colors)
+    plotter.plot(bokeh=bokeh, cmap=cmap, ax=ax)
     return plotter
