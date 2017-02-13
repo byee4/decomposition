@@ -23,12 +23,6 @@ class _PCAPlotter():
             A table of gene expression in the format (genes, samples)
         colors : pandas.Dataframe
             A table defining the color and condition for each sample name
-        prcomp : pandas.DataFrame
-            A table of pc components
-        source : bokeh.models.ColumnDataSource
-            Object which allows set_color() method to interactively update
-            colors in bokeh.
-        ax : matplotlib.axes._subplots.AxesSubplot
 
         """
         self.data = data
@@ -89,8 +83,10 @@ class _PCAPlotter():
         cmap = plt.get_cmap(cmap)
         for c in set(self.colors['condition']):
             indices = self.prcomp.ix[self.colors[self.colors['condition'] == c].index]
+
             color = self.colors[self.colors['condition'] == c]['color']
             rgbs = [cmap(n) for n in color]
+
             ax.scatter(indices[0], indices[1], label=c, color=rgbs)
     def _bokeh(self, ax):
         """
@@ -141,6 +137,7 @@ class _PCAPlotter():
             self._bokeh(ax)
         else:
             self._matplotlib(cmap, ax)
+
 
 def pcaplot(data, cmap, colors=None, ax=None, bokeh=False):
     """

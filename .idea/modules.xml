@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/clustering.iml" filepath="$PROJECT_DIR$/.idea/clustering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rbp-maps/.idea/rbp-maps.iml" filepath="$PROJECT_DIR$/../rbp-maps/.idea/rbp-maps.iml" />
     </modules>
   </component>
 </project>
