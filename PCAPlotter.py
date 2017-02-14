@@ -61,12 +61,12 @@ class _PCAPlotter():
             Object which allows set_color() method to
             interactively update colors in bokeh.
         """
+
         self.expt.metadata['hex'] = ch.expr_series_to_hex(
             self.expt.metadata['color'],
             self.cmap,
             is_norm=True
         )
-
         return ColumnDataSource(
             data=dict(
                 x=self.prcomp[0],
@@ -90,6 +90,7 @@ class _PCAPlotter():
         """
         if ax is None:
             ax = plt.gca()
+
         for c in set(self.expt.metadata['condition']):
             indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
@@ -109,6 +110,8 @@ class _PCAPlotter():
         -------
 
         """
+        self.expt.metadata.to_csv(
+            '/home/bay001/projects/codebase/data/metadata.tsv', sep='\t')
         ax.scatter('x', 'y', radius=0.1,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
@@ -133,6 +136,7 @@ class _PCAPlotter():
             self.cmap,
             is_norm=True
         )
+
         self.source.data['fill_color'] = self.expt.metadata['hex']
 
     def plot(self, bokeh=False, ax=None):
@@ -153,6 +157,8 @@ class _PCAPlotter():
         else:
             self._matplotlib(ax)
 
+    def update_cmap(self):
+        pass
 
 def pcaplot(expt, cmap, ax=None, bokeh=False):
     """
