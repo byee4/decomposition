@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from bokeh.models import ColumnDataSource
 
+import color_helpers as ch
+
 __all__ = []
 __version__ = 0.1
 __date__ = '2015-12-19'
@@ -14,7 +16,7 @@ __updated__ = '2015-12-19'
 
 class _PCAPlotter():
 
-    def __init__(self, data, colors):
+    def __init__(self, expt, cmap = 'Purples'):
         """
 
         Parameters
@@ -25,10 +27,15 @@ class _PCAPlotter():
             A table defining the color and condition for each sample name
 
         """
-        self.data = data
-        self.colors = colors
+        self.cmap = plt.get_cmap(cmap)
+        self.expt = expt
+
+        self.data = expt.counts.data
+        self.colors = expt.metadata
         self.prcomp = self._fit_transform()
         self.source = self._columnsource()
+
+
 
     def _fit_transform(self):
         """
@@ -41,8 +48,8 @@ class _PCAPlotter():
         """
 
         smusher = PCA()
-        prcomp = smusher.fit_transform(self.data.T)
-        prcomp = pd.DataFrame(prcomp, index=self.data.columns)
+        prcomp = smusher.fit_transform(self.expt.counts.data.T)
+        prcomp = pd.DataFrame(prcomp, index=self.expt.counts.data.columns)
         return prcomp
 
     def _columnsource(self):
@@ -54,23 +61,26 @@ class _PCAPlotter():
             Object which allows set_color() method to
             interactively update colors in bokeh.
         """
+        self.expt.metadata['hex'] = ch.expr_series_to_hex(
+            self.expt.metadata['color'],
+            self.cmap,
+            is_norm=True
+        )
 
         return ColumnDataSource(
             data=dict(
                 x=self.prcomp[0],
                 y=self.prcomp[1],
                 idx=self.prcomp.index,
-                fill_color=self.colors['color'],
+                fill_color=self.expt.metadata['hex'],
             )
         )
 
-    def _matplotlib(self, cmap='Purples', ax=None):
+    def _matplotlib(self, ax=None):
         """
 
         Parameters
         ----------
-        cmap : basestring
-            colormap string
         ax : matplotlib.axes._subplots.AxesSubplot
             subplot axes
 
@@ -80,14 +90,14 @@ class _PCAPlotter():
         """
         if ax is None:
             ax = plt.gca()
-        cmap = plt.get_cmap(cmap)
-        for c in set(self.colors['condition']):
-            indices = self.prcomp.ix[self.colors[self.colors['condition'] == c].index]
+        for c in set(self.expt.metadata['condition']):
+            indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
-            color = self.colors[self.colors['condition'] == c]['color']
-            rgbs = [cmap(n) for n in color]
+            color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
+            rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
 
             ax.scatter(indices[0], indices[1], label=c, color=rgbs)
+
     def _bokeh(self, ax):
         """
 
@@ -102,7 +112,7 @@ class _PCAPlotter():
         ax.scatter('x', 'y', radius=0.1,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
-    def set_color(self, colors):
+    def set_color(self, gene_id):
         """
         Updates self.ColumnDataSource 'fill_color' column to interactively
         change point colors.
@@ -117,16 +127,21 @@ class _PCAPlotter():
         -------
 
         """
-        self.source.data['fill_color'] = colors['color']
+        self.expt.recolor(gene_id)
+        self.expt.metadata['hex'] = ch.expr_series_to_hex(
+            self.expt.metadata['color'],
+            self.cmap,
+            is_norm=True
+        )
+        self.source.data['fill_color'] = self.expt.metadata['hex']
 
-    def plot(self, bokeh=False, cmap=None, ax=None):
+    def plot(self, bokeh=False, ax=None):
         """
 
         Parameters
         ----------
         bokeh : Boolean
             True if plotting bokeh figure, else matplotlib axes
-        cmap : colormap string
         ax : matplotlib.axes._subplots.AxesSubplot or bokeh.plotting.figure.Figure
 
         Returns
@@ -136,20 +151,18 @@ class _PCAPlotter():
         if bokeh:
             self._bokeh(ax)
         else:
-            self._matplotlib(cmap, ax)
+            self._matplotlib(ax)
 
 
-def pcaplot(data, cmap, colors=None, ax=None, bokeh=False):
+def pcaplot(expt, cmap, ax=None, bokeh=False):
     """
 
     Parameters
     ----------
-    data : pandas.DataFrame
-        table containing elements as rows, pc as cols
+    expt : ClusterExperiment
+        Object defining the expression data and conditions for samples.
     cmap : basestring
         colormap string
-    colors : pandas.DataFrame
-        A table defining the color and condition for each sample name
     ax : matplotlib.axes._subplots.AxesSubplot or bokeh.plotting.figure.Figure
     bokeh : Boolean
         True if plotting bokeh figure, else matplotlib axes
@@ -159,6 +172,6 @@ def pcaplot(data, cmap, colors=None, ax=None, bokeh=False):
     _PCAPlotter object
 
     """
-    plotter = _PCAPlotter(data, colors)
-    plotter.plot(bokeh=bokeh, cmap=cmap, ax=ax)
+    plotter = _PCAPlotter(expt, cmap)
+    plotter.plot(bokeh=bokeh, ax=ax)
     return plotter
