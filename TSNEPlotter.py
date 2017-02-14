@@ -3,36 +3,39 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 from bokeh.models import ColumnDataSource
 
 import color_helpers as ch
 
 __all__ = []
 __version__ = 0.1
-__date__ = '2015-12-19'
-__updated__ = '2015-12-19'
+__date__ = '2017-2-13'
+__updated__ = '2017-2-13'
 
 
-class _PCAPlotter():
+class _TSNEPlotter():
 
-    def __init__(self, expt, cmap = 'Purples'):
+    def __init__(self, expt, cmap = 'Purples',
+                 method = 'exact', random_state = 1):
         """
 
         Parameters
         ----------
-        data : pandas.DataFrame
-            A table of gene expression in the format (genes, samples)
-        colors : pandas.Dataframe
-            A table defining the color and condition for each sample name
-
+        expt : ClusterExperiment
+        cmap : basestring
+        method : basestring
+            gradient calculation algorithm
+            @see TSNE(method)
+        random_state : int
+            tsne random state for tsne seed generator
+            @see TSNE(random_state)
         """
+        self.method = method
+        self.random_state = random_state
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-
-        self.data = expt.counts.data
-        self.colors = expt.metadata
-        self.prcomp = self._fit_transform()
+        self.tcomp = self._fit_transform()
         self.source = self._columnsource()
 
 
@@ -47,10 +50,10 @@ class _PCAPlotter():
             table containing principle components ordered by variance
         """
 
-        smusher = PCA()
-        prcomp = smusher.fit_transform(self.expt.counts.data.T)
-        prcomp = pd.DataFrame(prcomp, index=self.expt.counts.data.columns)
-        return prcomp
+        manifolder = TSNE(method=self.method, random_state = self.random_state)
+        tcomp = manifolder.fit_transform(self.expt.counts.data.T)
+        tcomp = pd.DataFrame(tcomp, index=self.expt.counts.data.columns)
+        return tcomp
 
     def _columnsource(self):
         """
@@ -69,9 +72,9 @@ class _PCAPlotter():
         )
         return ColumnDataSource(
             data=dict(
-                x=self.prcomp[0],
-                y=self.prcomp[1],
-                idx=self.prcomp.index,
+                x=self.tcomp[0],
+                y=self.tcomp[1],
+                idx=self.tcomp.index,
                 fill_color=self.expt.metadata['hex'],
             )
         )
@@ -92,7 +95,7 @@ class _PCAPlotter():
             ax = plt.gca()
 
         for c in set(self.expt.metadata['condition']):
-            indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
+            indices = self.tcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
             color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
             rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
@@ -158,7 +161,7 @@ class _PCAPlotter():
     def update_cmap(self):
         pass
 
-def pcaplot(expt, cmap, ax=None, bokeh=False):
+def tsneplot(expt, cmap, ax=None, bokeh=False):
     """
 
     Parameters
@@ -176,6 +179,6 @@ def pcaplot(expt, cmap, ax=None, bokeh=False):
     _PCAPlotter object
 
     """
-    plotter = _PCAPlotter(expt, cmap)
+    plotter = _TSNEPlotter(expt, cmap)
     plotter.plot(bokeh=bokeh, ax=ax)
     return plotter

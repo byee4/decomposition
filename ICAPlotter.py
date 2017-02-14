@@ -3,36 +3,40 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
+from sklearn.decomposition import FastICA
 from bokeh.models import ColumnDataSource
 
 import color_helpers as ch
 
 __all__ = []
 __version__ = 0.1
-__date__ = '2015-12-19'
-__updated__ = '2015-12-19'
+__date__ = '2017-2-13'
+__updated__ = '2017-2-13'
 
 
-class _PCAPlotter():
+class _ICAPlotter():
 
-    def __init__(self, expt, cmap = 'Purples'):
+    def __init__(self, expt, cmap = 'Purples',
+                 algorithm = 'parallel', random_state = 1):
         """
 
         Parameters
         ----------
-        data : pandas.DataFrame
-            A table of gene expression in the format (genes, samples)
-        colors : pandas.Dataframe
-            A table defining the color and condition for each sample name
-
+        expt : ClusterExperiment
+        cmap : basestring
+        method : basestring
+            gradient calculation algorithm
+            @see TSNE(method)
+        random_state : int
+            tsne random state for tsne seed generator
+            @see TSNE(random_state)
         """
+
+        self.algorithm = algorithm
+        self.random_state = random_state
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-
-        self.data = expt.counts.data
-        self.colors = expt.metadata
-        self.prcomp = self._fit_transform()
+        self.icacomp = self._fit_transform()
         self.source = self._columnsource()
 
 
@@ -47,10 +51,10 @@ class _PCAPlotter():
             table containing principle components ordered by variance
         """
 
-        smusher = PCA()
-        prcomp = smusher.fit_transform(self.expt.counts.data.T)
-        prcomp = pd.DataFrame(prcomp, index=self.expt.counts.data.columns)
-        return prcomp
+        decomposer = FastICA(algorithm=self.algorithm, random_state = self.random_state)
+        icacomp = decomposer.fit_transform(self.expt.counts.data.T)
+        icacomp = pd.DataFrame(icacomp, index=self.expt.counts.data.columns)
+        return icacomp
 
     def _columnsource(self):
         """
@@ -69,9 +73,9 @@ class _PCAPlotter():
         )
         return ColumnDataSource(
             data=dict(
-                x=self.prcomp[0],
-                y=self.prcomp[1],
-                idx=self.prcomp.index,
+                x=self.icacomp[0],
+                y=self.icacomp[1],
+                idx=self.icacomp.index,
                 fill_color=self.expt.metadata['hex'],
             )
         )
@@ -92,7 +96,7 @@ class _PCAPlotter():
             ax = plt.gca()
 
         for c in set(self.expt.metadata['condition']):
-            indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
+            indices = self.icacomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
             color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
             rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
@@ -158,7 +162,7 @@ class _PCAPlotter():
     def update_cmap(self):
         pass
 
-def pcaplot(expt, cmap, ax=None, bokeh=False):
+def icaplot(expt, cmap, ax=None, bokeh=False):
     """
 
     Parameters
@@ -176,6 +180,6 @@ def pcaplot(expt, cmap, ax=None, bokeh=False):
     _PCAPlotter object
 
     """
-    plotter = _PCAPlotter(expt, cmap)
+    plotter = _ICAPlotter(expt, cmap)
     plotter.plot(bokeh=bokeh, ax=ax)
     return plotter

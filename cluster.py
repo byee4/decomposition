@@ -5,13 +5,15 @@ import sys
 import os
 import logging
 
-import pandas as pd
 import matplotlib.pyplot as plt
 
 from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
 
 import PCAPlotter
+import TSNEPlotter
+import ICAPlotter
+import KMeansPlotter
 import color_helpers as ch
 from ClusterExperiment import ClusterExperiment
 
@@ -105,7 +107,11 @@ def main(argv=None):  # IGNORE:C0111
                         default=False,
                         action='store_true',
                         help="True if we want to keep all intermediates")
-
+    parser.add_argument("-a", "--algorithm",
+                        dest="algorithm",
+                        default='PCA',
+                        type=str,
+                        help="Algorithm ([PCA] by default, or 'tSNE')")
 
     # Process arguments
     args = parser.parse_args()
@@ -116,6 +122,7 @@ def main(argv=None):  # IGNORE:C0111
     subset_file = args.subset
     conditions_file = args.conditions
     conditions_col = args.conditions_col
+    algorithm = args.algorithm.upper()
 
     is_featurecounts = args.featureCounts
     is_rpkm = args.rpkm
@@ -212,16 +219,41 @@ def main(argv=None):  # IGNORE:C0111
 
     """ plot stuff """
     fig, ax = plt.subplots()
-    plotter = PCAPlotter.pcaplot(
-        experiment,
-        cmap,
-        ax=ax, bokeh=False)
+
+    if algorithm == 'PCA':
+        plotter = PCAPlotter.pcaplot(
+            experiment,
+            cmap,
+            ax=ax, bokeh=False)
+        plotter.prcomp.to_csv(prefix + '.pcacomp.txt', sep=SEP)
+    elif algorithm == 'TSNE':
+        plotter = TSNEPlotter.tsneplot(
+            experiment,
+            cmap,
+            ax=ax, bokeh=False)
+        plotter.tcomp.to_csv(prefix + '.tsnecomp.txt', sep=SEP)
+    elif algorithm == 'ICA':
+        plotter = ICAPlotter.icaplot(
+            experiment,
+            cmap,
+            ax=ax, bokeh=False)
+        plotter.icacomp.to_csv(prefix + '.icacomp.txt', sep=SEP)
+    elif algorithm == 'KMEANS':
+        plotter = KMeansPlotter.kmeansplot(
+            experiment,
+            cmap,
+            ax=ax, bokeh=False)
+        plotter.kclusters.to_csv(prefix + '.kcomp.txt', sep=SEP)
+    else:
+        print("invalid algorithm. Exiting..")
+        sys.exit(1)
     leg = plt.legend(loc='best', shadow=False, frameon = 1)
+
     leg.get_frame().set_edgecolor('b')
     leg.get_frame().set_facecolor('w')
     fig.savefig(output_file)
 
-    plotter.prcomp.to_csv(prefix + '.pcacomp.txt', sep=SEP)
+
 
 if __name__ == "__main__":
     if DEBUG:

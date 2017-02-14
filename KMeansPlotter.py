@@ -3,36 +3,41 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
 from bokeh.models import ColumnDataSource
 
 import color_helpers as ch
 
 __all__ = []
 __version__ = 0.1
-__date__ = '2015-12-19'
-__updated__ = '2015-12-19'
+__date__ = '2017-2-13'
+__updated__ = '2017-2-13'
 
 
-class _PCAPlotter():
+class _KMeansPlotter():
 
-    def __init__(self, expt, cmap = 'Purples'):
+    def __init__(self, expt, cmap = 'Purples',
+                 n_clusters = 3,
+                 algorithm = 'auto', random_state = 1):
         """
 
         Parameters
         ----------
-        data : pandas.DataFrame
-            A table of gene expression in the format (genes, samples)
-        colors : pandas.Dataframe
-            A table defining the color and condition for each sample name
-
+        expt : ClusterExperiment
+        cmap : basestring
+        method : basestring
+            gradient calculation algorithm
+            @see TSNE(method)
+        random_state : int
+            tsne random state for tsne seed generator
+            @see TSNE(random_state)
         """
+        self.n_clusters = n_clusters
+        self.algorithm = algorithm
+        self.random_state = random_state
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-
-        self.data = expt.counts.data
-        self.colors = expt.metadata
-        self.prcomp = self._fit_transform()
+        self.kclusters = self._fit_transform()
         self.source = self._columnsource()
 
 
@@ -47,10 +52,14 @@ class _PCAPlotter():
             table containing principle components ordered by variance
         """
 
-        smusher = PCA()
-        prcomp = smusher.fit_transform(self.expt.counts.data.T)
-        prcomp = pd.DataFrame(prcomp, index=self.expt.counts.data.columns)
-        return prcomp
+        kmeans = KMeans(
+            algorithm = self.algorithm,
+            random_state = self.random_state,
+            n_clusters = self.n_clusters
+        )
+        kclusters = kmeans.fit_transform(self.expt.counts.data.T)
+        kclusters = pd.DataFrame(kclusters, index=self.expt.counts.data.columns)
+        return kclusters
 
     def _columnsource(self):
         """
@@ -69,9 +78,9 @@ class _PCAPlotter():
         )
         return ColumnDataSource(
             data=dict(
-                x=self.prcomp[0],
-                y=self.prcomp[1],
-                idx=self.prcomp.index,
+                x=self.kclusters[0],
+                y=self.kclusters[1],
+                idx=self.kclusters.index,
                 fill_color=self.expt.metadata['hex'],
             )
         )
@@ -92,7 +101,7 @@ class _PCAPlotter():
             ax = plt.gca()
 
         for c in set(self.expt.metadata['condition']):
-            indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
+            indices = self.kclusters.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
             color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
             rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
@@ -158,7 +167,7 @@ class _PCAPlotter():
     def update_cmap(self):
         pass
 
-def pcaplot(expt, cmap, ax=None, bokeh=False):
+def kmeansplot(expt, cmap, ax=None, bokeh=False):
     """
 
     Parameters
@@ -176,6 +185,6 @@ def pcaplot(expt, cmap, ax=None, bokeh=False):
     _PCAPlotter object
 
     """
-    plotter = _PCAPlotter(expt, cmap)
+    plotter = _KMeansPlotter(expt, cmap)
     plotter.plot(bokeh=bokeh, ax=ax)
     return plotter
