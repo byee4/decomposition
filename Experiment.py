@@ -3,7 +3,7 @@ import color_helpers as ch
 from ExpressionTable import *
 
 
-class ClusterExperiment():
+class Experiment():
     """
     Contains expression (ExpressionTable) and metadata (DataFrame) info
     for a cluster analysis. The table contains expression data in the form of

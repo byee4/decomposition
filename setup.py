@@ -13,10 +13,10 @@ setup(
     version = "0.0.1",
     author = "Brian",
     author_email = "byee4@gmail.com",
-    description = ("clustering tools"),
+    description = ("decomposition tools"),
     license = "BSD",
-    keywords = "clustering",
-    url = "http://github.com/byee4/clustering",
+    keywords = "decomposition",
+    url = "http://github.com/byee4/decomposition",
     long_description=read('README'),
     classifiers=[
         "Development Status :: 3 - Alpha",

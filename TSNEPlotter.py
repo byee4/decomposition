@@ -22,7 +22,7 @@ class _TSNEPlotter():
 
         Parameters
         ----------
-        expt : ClusterExperiment
+        expt : Experiment
         cmap : basestring
         method : basestring
             gradient calculation algorithm
@@ -166,7 +166,7 @@ def tsneplot(expt, cmap, ax=None, bokeh=False):
 
     Parameters
     ----------
-    expt : ClusterExperiment
+    expt : Experiment
         Object defining the expression data and conditions for samples.
     cmap : basestring
         colormap string

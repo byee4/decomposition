@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/clustering.iml" filepath="$PROJECT_DIR$/.idea/clustering.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../rbp-maps/.idea/rbp-maps.iml" filepath="$PROJECT_DIR$/../rbp-maps/.idea/rbp-maps.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/sshfs/home/projects/codebase/decomposition/.idea/decomposition.iml" filepath="$USER_HOME$/Documents/sshfs/home/projects/codebase/decomposition/.idea/decomposition.iml" />
+      <module fileurl="file://$USER_HOME$/Documents/sshfs/home/projects/codebase/rbp-maps/.idea/rbp-maps.iml" filepath="$USER_HOME$/Documents/sshfs/home/projects/codebase/rbp-maps/.idea/rbp-maps.iml" />
     </modules>
   </component>
 </project>

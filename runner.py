@@ -13,9 +13,8 @@ from argparse import RawDescriptionHelpFormatter
 import PCAPlotter
 import TSNEPlotter
 import ICAPlotter
-import KMeansPlotter
 import color_helpers as ch
-from ClusterExperiment import ClusterExperiment
+from Experiment import Experiment
 
 DEBUG = 0
 TESTRUN = 0
@@ -151,7 +150,7 @@ def main(argv=None):  # IGNORE:C0111
 
     """ read in counts file """
     logger.info(sys.argv)
-    experiment = ClusterExperiment(
+    experiment = Experiment(
         counts_file=counts_file,
         conditions_file=conditions_file,
         conditions_col=conditions_col,
@@ -238,12 +237,6 @@ def main(argv=None):  # IGNORE:C0111
             cmap,
             ax=ax, bokeh=False)
         plotter.icacomp.to_csv(prefix + '.icacomp.txt', sep=SEP)
-    elif algorithm == 'KMEANS':
-        plotter = KMeansPlotter.kmeansplot(
-            experiment,
-            cmap,
-            ax=ax, bokeh=False)
-        plotter.kclusters.to_csv(prefix + '.kcomp.txt', sep=SEP)
     else:
         print("invalid algorithm. Exiting..")
         sys.exit(1)
