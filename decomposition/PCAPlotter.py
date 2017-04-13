@@ -7,6 +7,8 @@ from sklearn.decomposition import PCA
 from bokeh.models import ColumnDataSource
 import seaborn as sns
 import color_helpers as ch
+import numpy as np
+import pandas as pd
 
 __all__ = []
 __version__ = 0.1
@@ -32,10 +34,24 @@ class _PCAPlotter():
 
         self.data = expt.counts.data
         self.colors = expt.metadata
-        self.prcomp = self._fit_transform()
+        self.pca, self.prcomp = self._fit_transform()
         self.source = self._columnsource()
+        # self.eigenvectors = self.prcomp.components_[0]
 
+    def get_pc_components(self):
+        pc_cols = range(len(self.pca.components_))
+        pc_components = pd.DataFrame(
+            index=self.expt.counts.data.index,
+            columns=pc_cols
+        )
 
+        for n in range(0, len(self.pca.components_)):
+            for i, j in zip(
+                    self.expt.counts.data.index,
+                    np.abs(self.pca.components_[n])
+            ):
+                pc_components.ix[i, n] = j
+        return pc_components
 
     def _fit_transform(self):
         """
@@ -50,7 +66,8 @@ class _PCAPlotter():
         smusher = PCA()
         prcomp = smusher.fit_transform(self.expt.counts.data.T)
         prcomp = pd.DataFrame(prcomp, index=self.expt.counts.data.columns)
-        return prcomp
+
+        return smusher, prcomp
 
     def _columnsource(self):
         """
@@ -91,19 +108,16 @@ class _PCAPlotter():
         if ax is None:
             ax = plt.gca()
 
-        colors = sns.color_palette("hls",
-                                   len(set(self.expt.metadata['color'])))
+        colors = sns.color_palette(
+            "hls", len(set(self.expt.metadata['color']))
+        )
         i = 0
         for c in set(self.expt.metadata['condition']):
 
             indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
-
-            color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
-            print(color)
-            rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
-
             ax.scatter(indices[0], indices[1], label=c, color=colors[i])
             i += 1
+
     def _bokeh(self, ax):
         """
 

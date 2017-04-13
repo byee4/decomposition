@@ -225,6 +225,8 @@ def main(argv=None):  # IGNORE:C0111
             cmap,
             ax=ax, bokeh=False)
         plotter.prcomp.to_csv(prefix + '.pcacomp.txt', sep=SEP)
+        if keep_intermediates:
+            plotter.get_pc_components().to_csv(prefix + '.prcomp.txt', sep=SEP)
     elif algorithm == 'TSNE':
         plotter = TSNEPlotter.tsneplot(
             experiment,

@@ -12,7 +12,7 @@ setup(
     name = "PCA",
     version = "0.0.1",
     author = "Brian",
-    author_email = "byee4@gmail.com",
+    author_email="byee4@jhu.edu",
     description = ("decomposition tools"),
     license = "BSD",
     keywords = "decomposition",
@@ -24,7 +24,7 @@ setup(
         "License :: OSI Approved :: BSD License",
     ],
     packages=['decomposition'],
-    package_dir={'decomposition': 'decomposition'},
+    package_dir={'decomposition': 'decomposition/'},
     include_package_data=True,
     install_requires=[
         'numpy>=1.10',

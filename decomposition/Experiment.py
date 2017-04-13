@@ -1,6 +1,10 @@
-import ExpressionTable
+# import ExpressionTable
+import numpy as np
+import pandas as pd
+
 import color_helpers as ch
-from ExpressionTable import *
+from ExpressionTable import ExpressionTable
+from ExpressionTable import FeatureCountsTable
 
 
 class Experiment():
