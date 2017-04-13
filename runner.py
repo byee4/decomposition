@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
 
-import PCAPlotter
-import TSNEPlotter
-import ICAPlotter
-import color_helpers as ch
-from Experiment import Experiment
+from decomposition import PCAPlotter
+from decomposition import TSNEPlotter
+from decomposition import ICAPlotter
+from decomposition import color_helpers as ch
+from decomposition import Experiment
 
 DEBUG = 0
 TESTRUN = 0
@@ -150,7 +150,7 @@ def main(argv=None):  # IGNORE:C0111
 
     """ read in counts file """
     logger.info(sys.argv)
-    experiment = Experiment(
+    experiment = Experiment.Experiment(
         counts_file=counts_file,
         conditions_file=conditions_file,
         conditions_col=conditions_col,

@@ -1,0 +1,15 @@
+	condition
+PHI_1_rep2_exon	PHI_1_exon
+PHI_1_rep1_exon	PHI_1_exon
+PHI_2_rep2_exon	PHI_2_exon
+PHI_2_rep1_exon	PHI_2_exon
+PHI_4_rep1_exon	PHI_4_exon
+PHI_4_rep2_exon	PHI_4_exon
+PHI_2_rep2_utr3	PHI_2_utr3
+PHI_2_rep1_utr3	PHI_2_utr3
+PHI_3_rep1_utr3	PHI_3_utr3
+PHI_3_rep2_utr3	PHI_3_utr3
+PHI_4_rep1_utr3	PHI_4_utr3
+PHI_4_rep2_utr3	PHI_4_utr3
+PHI_1_rep2_utr3	PHI_1_utr3
+PHI_1_rep1_utr3	PHI_1_utr3
