@@ -25,20 +25,36 @@ class _PCAPlotter():
         ----------
         data : pandas.DataFrame
             A table of gene expression in the format (genes, samples)
-        colors : pandas.Dataframe
-            A table defining the color and condition for each sample name
+        cmap : matplotlib.colors.Colormap
+            colormap instance corresponding to the name
+
+        Attributes
+        ----------
+        self.cmap : matplotlib.colors.Colormap
+            colormap instance corresponding to the name
+        self.expt : Experiment.Experiment
+            object containing info about the decomposition expt. This
+            includes: self.expt.counts (counts table or matrix to be fitted)
+            and self.expt.metadata (labels specifying the grouping of each
+            column).
+        self.pca : sklearn.decomposition.PCA
+        self.source : bokeh.models.ColumnDataSource
 
         """
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-
-        self.data = expt.counts.data
-        self.colors = expt.metadata
         self.pca, self.prcomp = self._fit_transform()
         self.source = self._columnsource()
-        # self.eigenvectors = self.prcomp.components_[0]
 
     def get_pc_components(self):
+        """
+        Returns a DataFrame of how much each feature contributes to the PC.
+
+        Returns
+        -------
+        pc_components : pandas.DataFrame
+
+        """
         pc_cols = range(len(self.pca.components_))
         pc_components = pd.DataFrame(
             index=self.expt.counts.data.index,
@@ -71,6 +87,7 @@ class _PCAPlotter():
 
     def _columnsource(self):
         """
+        Creates and returns the ColumnDataSource object needed by Bokeh plots.
 
         Returns
         -------
@@ -78,12 +95,12 @@ class _PCAPlotter():
             Object which allows set_color() method to
             interactively update colors in bokeh.
         """
-
         self.expt.metadata['hex'] = ch.expr_series_to_hex(
             self.expt.metadata['color'],
             self.cmap,
             is_norm=True
         )
+
         return ColumnDataSource(
             data=dict(
                 x=self.prcomp[0],
@@ -129,7 +146,7 @@ class _PCAPlotter():
         -------
 
         """
-        ax.scatter('x', 'y', radius=0.1,
+        ax.scatter('x', 'y', radius=0.2,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
 
@@ -148,13 +165,13 @@ class _PCAPlotter():
         -------
 
         """
+        print('setting color')
         self.expt.recolor(gene_id)
         self.expt.metadata['hex'] = ch.expr_series_to_hex(
             self.expt.metadata['color'],
             self.cmap,
             is_norm=True
         )
-
         self.source.data['fill_color'] = self.expt.metadata['hex']
 
     def plot(self, bokeh=False, ax=None):

@@ -9,26 +9,26 @@ conda install mkl mkl-service numpy pandas sklearn bokeh matplotlib
 python runner.py -l2 \
 -f \
 -rpkm \
--i featureCounts.txt \
--o pca.png \
--c conditions.tsv \
--cc treatment \
--pc
+-i examples/data/counts.txt \
+-o examples/data/pca.png \
+-c examples/data/conditions.txt \
+-cc response \
+-k
 ```
 
 ### usage (to plot a generic matrix) given a conditions file :
 ```
-python runner.py -i examples/iris.txt \
--o examples/iris.png \
--c examples/iris.names \
+python runner.py -i examples/data/iris.txt \
+-o examples/data/iris.png \
+-c examples/data/iris.names \
 -cc names
 ```
 
 ### usage (to plot a generic matrix) given a conditions file (keeping intermediates):
 ```
-python runner.py -i examples/alll_clip_alone_kmer_statistics.txt \
--o examples/kmer.png \
--c examples/alll_clip_alone_kmer_statistics_conditions.txt \
+python runner.py -i examples/data/alll_clip_alone_kmer_statistics.txt \
+-o examples/data/kmer.png \
+-c examples/data/alll_clip_alone_kmer_statistics_conditions.txt \
 -cc condition \
 -k
 ```
