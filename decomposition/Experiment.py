@@ -6,7 +6,7 @@ from ExpressionTable import *
 class Experiment():
     """
     Contains expression (ExpressionTable) and metadata (DataFrame) info
-    for a cluster analysis. The table contains expression data in the form of
+    for a cluster clip_analysis. The table contains expression data in the form of
     counts, featurecounts, or expression for each attribute, for each sample.
     The metadata info contains categorical information about each sample. For
     example, ExpressionTable(iris.txt) contains expression for each attribute,
@@ -29,7 +29,6 @@ class Experiment():
             conditions_col,
             gene_id,
         )
-
 
     def set_metadata(self, conditions_file, conditions_col, gene_id):
         """

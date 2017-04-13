@@ -4,7 +4,6 @@ from matplotlib.colors import ListedColormap
 
 
 def hex_to_cmap(num_to_generate):
-
     hexes = generate_hex(num_to_generate)
     return ListedColormap(hexes)
 
@@ -161,7 +160,7 @@ def color_by_condition(df, col_string):
         print("reverting to {}".format(df.columns[0]))
         max_conditions = set(df[df.columns[0]])
     colormap = {}
-    c = 0
+    c = 1
     for condition in max_conditions:
         colormap[condition] = {
             'color':c,

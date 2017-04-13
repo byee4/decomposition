@@ -5,6 +5,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="rbp-maps" />
+    <orderEntry type="module" module-name="clustering" />
+    <orderEntry type="module" module-name="clipper" />
+    <orderEntry type="module" module-name="clip_analysis" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="" />

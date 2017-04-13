@@ -23,6 +23,9 @@ setup(
         "Topic :: Utilities",
         "License :: OSI Approved :: BSD License",
     ],
+    packages=['decomposition'],
+    package_dir={'decomposition': 'decomposition'},
+    include_package_data=True,
     install_requires=[
         'numpy>=1.10',
         'pandas>=0.16',
@@ -30,5 +33,6 @@ setup(
         'sklearn',
         'seaborn>=0.7',
         'bokeh>=0.10.0'
-    ]
+    ],
+
 )

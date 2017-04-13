@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from bokeh.models import ColumnDataSource
-
+import seaborn as sns
 import color_helpers as ch
 
 __all__ = []
@@ -91,14 +91,19 @@ class _PCAPlotter():
         if ax is None:
             ax = plt.gca()
 
+        colors = sns.color_palette("hls",
+                                   len(set(self.expt.metadata['color'])))
+        i = 0
         for c in set(self.expt.metadata['condition']):
+
             indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
             color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
+            print(color)
             rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
 
-            ax.scatter(indices[0], indices[1], label=c, color=rgbs)
-
+            ax.scatter(indices[0], indices[1], label=c, color=colors[i])
+            i += 1
     def _bokeh(self, ax):
         """
 
@@ -113,6 +118,7 @@ class _PCAPlotter():
         ax.scatter('x', 'y', radius=0.1,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
+
     def set_color(self, gene_id):
         """
         Updates self.ColumnDataSource 'fill_color' column to interactively
@@ -157,6 +163,7 @@ class _PCAPlotter():
 
     def update_cmap(self):
         pass
+
 
 def pcaplot(expt, cmap, ax=None, bokeh=False):
     """
