@@ -1,6 +1,6 @@
 installs may require some stuff:
 
-conda install mkl mkl-service numpy pandas sklearn bokeh matplotlib
+conda install mkl mkl-service numpy pandas sckit-learn bokeh matplotlib
 
 # Examples!
 
