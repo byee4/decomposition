@@ -19,7 +19,7 @@ python setup.py install
 Example [conditions.txt](https://github.com/byee4/decomposition/blob/master/examples/data/conditions.txt)
 
 ```bash
-python decompose.py \
+decompose \
 --input examples/data/counts.txt \
 --output examples/data/pca.png \
 --conditions examples/data/conditions.txt \
@@ -33,7 +33,7 @@ python decompose.py \
 
 ### usage (to plot a generic matrix) given a conditions file :
 ```bash
-python decompose.py -i examples/data/iris.txt \
+decompose -i examples/data/iris.txt \
 -o examples/data/iris.png \
 -c examples/data/iris.names \
 -cc names
@@ -41,7 +41,7 @@ python decompose.py -i examples/data/iris.txt \
 
 ### usage (to plot a generic matrix) given a conditions file (keeping intermediates):
 ```bash
-python decompose.py -i examples/data/alll_clip_alone_kmer_statistics.txt \
+decompose -i examples/data/alll_clip_alone_kmer_statistics.txt \
 -o examples/data/kmer.png \
 -c examples/data/alll_clip_alone_kmer_statistics_conditions.txt \
 -cc condition \
