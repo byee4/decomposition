@@ -2,8 +2,8 @@ installs may require some stuff:
 
 ```
 conda create -n decomposition python=2.7
-conda install mkl mkl-service numpy pandas scikit-learn bokeh matplotlib
 source activate decomposition
+conda install mkl mkl-service numpy pandas scikit-learn bokeh matplotlib
 ```
 
 ```
