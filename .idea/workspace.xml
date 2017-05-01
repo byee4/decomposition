@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1f8bb69-8916-4ae6-9146-1ce6f53e8dcf" name="Default" comment="added bokeh xample">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../clustering/examples/iris_example.err" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../clustering/examples/iris_example.kmeans.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../clustering/examples/iris_example.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../clustering/examples/iris_example.metadata.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../clustering/examples/iris_example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/decomposition.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/runner.py" afterPath="$PROJECT_DIR$/decompose.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="decomposition" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/setup.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-19.821428">
+                  <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ExpressionTable.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/decomposition/ExpressionTable.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-11.785714">
+                  <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-9.107142">
+                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../clustering/README">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="conditions.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/examples/data/conditions.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="decompose.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/decompose.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="2.4541533">
+                  <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Setup Script" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>four_frame_with_inclusion_exclusion_events_with_error</find>
+      <find>plot_err</find>
+      <find>distributions</find>
+      <find>get_region</find>
+      <find>get_distributions</find>
+      <find>RNA_position_interval</find>
+      <find>generate_region_dict</find>
+      <find>get_region_distributions</find>
+      <find>both strands</find>
+      <find>fix_strand</find>
+      <find>plot_se</find>
+      <find>output</find>
+      <find>five_prime</find>
+      <find>merge</find>
+      <find>withinput</find>
+      <find>sems</find>
+      <find>cols</find>
+      <find>set_means_</find>
+      <find>defaultdict</find>
+      <find>write_interme</find>
+      <find>_SEPlotter</find>
+      <find>_UnscaledCDSPlotter</find>
+      <find>plot_splice</find>
+      <find>plot_exon</find>
+      <find>alt_5p</find>
+      <find>experiment</find>
+      <find>self.colors</find>
+      <find>self.data</find>
+      <find>expr_series_to_hex</find>
+      <find>set_color</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../clustering" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ExpressionTable.py" />
+        <option value="$PROJECT_DIR$/../clustering/PCAPlotter.py" />
+        <option value="$PROJECT_DIR$/../clustering/runner.py" />
+        <option value="$PROJECT_DIR$/../clustering/KMeansPlotter.py" />
+        <option value="$PROJECT_DIR$/PCAPlotter.py" />
+        <option value="$PROJECT_DIR$/color_helpers.py" />
+        <option value="$PROJECT_DIR$/Experiment.py" />
+        <option value="$PROJECT_DIR$/runner.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/peak/annotations.py" />
+        <option value="$PROJECT_DIR$/../clip_analysis/src/CLIP_analysis.py" />
+        <option value="$PROJECT_DIR$/../clip_analysis/src/CLIP_analysis_runner.py" />
+        <option value="$PROJECT_DIR$/../clip_analysis/clip_analysis/src/CLIP_analysis_runner.py" />
+        <option value="$PROJECT_DIR$/../clip_analysis/clip_analysis/src/CLIP_analysis.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/plot/Plotter.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/plot/RBPPlotter.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/tests/test_intervals.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/tests/test_intervals.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/__init__.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/test/test_intervals/chr11-70266505-70266616-0-0-+_chr11-70266505-70266616-0-0-+.densities.txt" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/analysis/peak_vs_density_rbpmaps.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/matrix_functions.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/ReadDensity.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/normalization_functions.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/intervals.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/bin/make_bigwig_files.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/Feature.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/matrix.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/peak/intervals.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/peak/PeakPlotter.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/peak/misc.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/plot_peak.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/analysis/subset_rmats_junctioncountonly.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/plot_density.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/misc.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/analysis/event_heatmaps.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/test/test_intervals.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/analysis/ks_plots.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/analysis/plot_rmats_inclevel_distributions.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/analysis/rmats_inclevel_analysis.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/setup.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/.gitignore" />
+        <option value="$PROJECT_DIR$/../rbp-maps/README.md" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/Map.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/RDPlotter.py" />
+        <option value="$PROJECT_DIR$/../rbp-maps/maps/density/test/test_features.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/decomposition/Experiment.py" />
+        <option value="$PROJECT_DIR$/README" />
+        <option value="$PROJECT_DIR$/decomposition/runner.py" />
+        <option value="$PROJECT_DIR$/decomposition/PCAPlotter.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1855" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+          <State>
+            <id>XML</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clustering" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clustering" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decomposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples/data" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/decomposition" />
+      <recent name="$PROJECT_DIR$/../rbp-maps/maps/density" />
+      <recent name="$PROJECT_DIR$/../clip_analysis/analysis" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../rbp-maps/maps/analysis" />
+      <recent name="$PROJECT_DIR$/../rbp-maps/maps/peak" />
+      <recent name="$PROJECT_DIR$/../clip_analysis" />
+      <recent name="$PROJECT_DIR$/../clip_analysis/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="clustering" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="clustering" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="clustering" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="clustering" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="clustering" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="clustering" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1f8bb69-8916-4ae6-9146-1ce6f53e8dcf" name="Default" comment="" />
+      <created>1486713632843</created>
+      <option name="number" value="Default" />
+      <updated>1486713632843</updated>
+    </task>
+    <task id="LOCAL-00001" summary="add setup script">
+      <created>1486714990574</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1486714990574</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add setup script">
+      <created>1486715132364</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1486715132364</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add setup script">
+      <created>1486715291809</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1486715291809</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add some minimum dependency versions.">
+      <created>1486715536127</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1486715536127</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add setup script">
+      <created>1486715629270</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1486715629270</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add setup script">
+      <created>1486715731478</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1486715731478</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add setup script">
+      <created>1486715967455</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1486715967455</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added examples">
+      <created>1486718025754</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1486718025754</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added examples">
+      <created>1486718068356</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1486718068356</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added examples">
+      <created>1486719007159</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1486719007159</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added jupyter example&#10;">
+      <created>1486719542352</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1486719542352</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added jupyter example&#10;">
+      <created>1486719988654</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1486719988654</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Implement Legend&#10;&#10;">
+      <created>1486770119562</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1486770119562</updated>
+    </task>
+    <task id="LOCAL-00014" summary="cleaned up comments">
+      <created>1486773910105</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1486773910105</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated PCA_runner role&#10;&#10;- add class Metadata, CountsTable, ClusterExperiment">
+      <created>1487005605435</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1487005605435</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Updated class roles&#10;&#10;- modified class Metadata, CountsTable, ClusterExperiment">
+      <created>1487035636646</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1487035636646</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Updated PCA_runner role&#10;&#10;- add class Metadata, CountsTable, ClusterExperiment">
+      <created>1487037935272</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1487037935272</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Updated runner role&#10;&#10;- add class ICAPlotter, TSNEPlotter">
+      <created>1487108242968</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1487108242968</updated>
+    </task>
+    <task id="LOCAL-00019" summary="made code more readable">
+      <created>1487387710367</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1487387710367</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added nargs+ for handling pos/neg/bg annotations for peak plots.">
+      <created>1487464265245</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1487464265245</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Reformatted and commented&#10;&#10;Refactored codebase&#10;Finished commenting matrix&#10;Finished commenting normalization_functions&#10;Finished commenting misc&#10;Finished commenting intervals&#10;Finished commenting ReadDensity&#10;&#10;Created new Plotter function&#10;Added minimum runner script for skipped exons&#10;&#10;TODO: Feature">
+      <created>1488246480117</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1488246480117</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Updated runner role&#10;&#10;- add class KMeansPlotter&#10;-">
+      <created>1491003640153</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1491003640153</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added setup script and twobed example">
+      <created>1491519746903</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1491519746903</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added example notebooks to the main directory">
+      <created>1491521902429</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1491521902430</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Moved the python notebooks into">
+      <created>1491588533743</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1491588533743</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Made more notebook examples in the examples folder.">
+      <created>1491605604736</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1491605604736</updated>
+    </task>
+    <task id="LOCAL-00027" summary="changed color mapping in matplotlib">
+      <created>1492102722796</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1492102722796</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added prcomponents output">
+      <created>1492106759383</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1492106759383</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added better readme examples.">
+      <created>1492107202521</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1492107202522</updated>
+    </task>
+    <task id="LOCAL-00030" summary=".">
+      <created>1492107388136</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1492107388136</updated>
+    </task>
+    <task id="LOCAL-00031" summary="moved some files around&#10;- added new kmer example&#10;- moved examples folder to main dir&#10;- moved runner to main dir">
+      <created>1492107679391</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1492107679391</updated>
+    </task>
+    <task id="LOCAL-00032" summary="added bokeh examples for scRNA and iris">
+      <created>1492119006559</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1492119006559</updated>
+    </task>
+    <task id="LOCAL-00033" summary="added bokeh xample">
+      <created>1492822939608</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1492822939608</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19245283" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0062176166" sideWeight="0.5137466" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17899929" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14164905" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32793522" sideWeight="0.49583334" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17827298" sideWeight="0.48625338" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="add some minimum dependency versions." />
+    <MESSAGE value="add setup script" />
+    <MESSAGE value="added examples" />
+    <MESSAGE value="&#10;" />
+    <MESSAGE value="added jupyter example&#10;" />
+    <MESSAGE value="Implement Legend&#10;&#10;" />
+    <MESSAGE value="cleaned up comments" />
+    <MESSAGE value="Updated class roles&#10;&#10;- modified class Metadata, CountsTable, ClusterExperiment" />
+    <MESSAGE value="Updated PCA_runner role&#10;&#10;- add class Metadata, CountsTable, ClusterExperiment" />
+    <MESSAGE value="Updated runner role&#10;&#10;- add class ICAPlotter, TSNEPlotter" />
+    <MESSAGE value="made code more readable" />
+    <MESSAGE value="added nargs+ for handling pos/neg/bg annotations for peak plots." />
+    <MESSAGE value="Reformatted and commented&#10;&#10;Refactored codebase&#10;Finished commenting matrix&#10;Finished commenting normalization_functions&#10;Finished commenting misc&#10;Finished commenting intervals&#10;Finished commenting ReadDensity&#10;&#10;Created new Plotter function&#10;Added minimum runner script for skipped exons&#10;&#10;TODO: Feature" />
+    <MESSAGE value="Updated runner role&#10;&#10;- add class KMeansPlotter&#10;-" />
+    <MESSAGE value="Added setup script and twobed example" />
+    <MESSAGE value="Added example notebooks to the main directory" />
+    <MESSAGE value="Moved the python notebooks into" />
+    <MESSAGE value="Made more notebook examples in the examples folder." />
+    <MESSAGE value="changed color mapping in matplotlib" />
+    <MESSAGE value="added prcomponents output" />
+    <MESSAGE value="added better readme examples." />
+    <MESSAGE value="." />
+    <MESSAGE value="moved some files around&#10;- added new kmer example&#10;- moved examples folder to main dir&#10;- moved runner to main dir" />
+    <MESSAGE value="added bokeh examples for scRNA and iris" />
+    <MESSAGE value="added bokeh xample" />
+    <option name="LAST_COMMIT_MESSAGE" value="added bokeh xample" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decomposition/ICAPlotter.py" />
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/misc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="286" column="11" selection-start-line="286" selection-start-column="11" selection-end-line="286" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/peak/intervals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/test/test_intervals/._test_2000bp.bg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/analysis/event_heatmaps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/intervals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="369" column="0" selection-start-line="369" selection-start-column="0" selection-end-line="369" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/test/test_intervals/test_2000bp.neg.bg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/analysis/ks_plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bfx/pyscripts/encode/manifest_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../homework/scratch/Galaxy1-[UCSC_Main_on_Human__snp147Common_(chr6_31272910-31272920)].bed">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/plot_density.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="327" column="0" selection-start-line="327" selection-start-column="0" selection-end-line="327" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bfx/pyscripts/rnaseq/subset_rmats_junctioncountonly.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/test/test_intervals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="442" column="48" selection-start-line="442" selection-start-column="48" selection-end-line="442" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/plot_peak.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/peak/PeakPlotter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/test/test_intervals/test_2000bp.pos.bg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bfx/pyscripts/rnaseq/manifest_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../bfx/pyscripts/rnaseq/rmats_inclevel_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="185" column="11" selection-start-line="185" selection-start-column="11" selection-end-line="185" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/peak/matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/Map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="337" column="27" selection-start-line="337" selection-start-column="18" selection-end-line="337" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/test/test_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/Feature.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="479" column="0" selection-start-line="479" selection-start-column="0" selection-end-line="479" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="613" column="0" selection-start-line="613" selection-start-column="0" selection-end-line="613" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../rbp-maps/maps/density/RDPlotter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="293" column="0" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../clustering/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decomposition/Experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decomposition/Metadata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/data/markers.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/data/counts.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decomposition/color_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="22" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decomposition/PCAPlotter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decomposition/ExpressionTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.785714">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decompose.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4541533">
+          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/data/conditions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/data/scrna_matrix.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43381536">
+          <caret line="0" column="2098" selection-start-line="0" selection-start-column="2098" selection-end-line="0" selection-end-column="2098" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/data/scrna_test_markers.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.821428">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.107142">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../clustering/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

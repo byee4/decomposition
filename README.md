@@ -1,32 +1,47 @@
 installs may require some stuff:
 
-conda install mkl mkl-service numpy pandas sckit-learn bokeh matplotlib
+```
+conda create -n decomposition python=2.7
+conda install mkl mkl-service numpy pandas scikit-learn bokeh matplotlib
+source activate decomposition
+```
 
+```
+git clone https://github.com/byee4/decomposition
+cd decomposition
+python setup.py build
+python setup.py install
+```
 # Examples!
 
-### usage (to plot log2(rpkm) from featurecounts.txt, given a conditions file, saving principle components to file) :
-```
-python runner.py -l2 \
--f \
--rpkm \
--i examples/data/counts.txt \
--o examples/data/pca.png \
--c examples/data/conditions.txt \
+### usage (to plot log2(rpkm) from [featurecounts](http://bioinf.wehi.edu.au/featureCounts/) counts.txt, given a conditions file (--conditions), saving principle components to file) :
+
+Example [conditions.txt](https://github.com/byee4/decomposition/blob/master/examples/data/conditions.txt)
+
+```bash
+python decompose.py \
+--input examples/data/counts.txt \
+--output examples/data/pca.png \
+--conditions examples/data/conditions.txt \
+--algorithm PCA \
 -cc response \
+-f \
+-l2 \
+-rpkm \
 -k
 ```
 
 ### usage (to plot a generic matrix) given a conditions file :
-```
-python runner.py -i examples/data/iris.txt \
+```bash
+python decompose.py -i examples/data/iris.txt \
 -o examples/data/iris.png \
 -c examples/data/iris.names \
 -cc names
 ```
 
 ### usage (to plot a generic matrix) given a conditions file (keeping intermediates):
-```
-python runner.py -i examples/data/alll_clip_alone_kmer_statistics.txt \
+```bash
+python decompose.py -i examples/data/alll_clip_alone_kmer_statistics.txt \
 -o examples/data/kmer.png \
 -c examples/data/alll_clip_alone_kmer_statistics_conditions.txt \
 -cc condition \
