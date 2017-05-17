@@ -36,31 +36,10 @@ class _ICAPlotter():
         self.random_state = random_state
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-        self.ica, self.icacomp = self._fit_transform()
+        self.icacomp = self._fit_transform()
         self.source = self._columnsource()
 
-    def get_independent_components(self):
-        """
-        Returns a DataFrame of how much each feature contributes to the PC.
 
-        Returns
-        -------
-        pc_components : pandas.DataFrame
-
-        """
-        ic_cols = range(len(self.ica.components_))
-        ic_components = pd.DataFrame(
-            index=self.expt.counts.data.index,
-            columns=ic_cols
-        )
-
-        for n in range(0, len(self.ica.components_)):
-            for i, j in zip(
-                    self.expt.counts.data.index,
-                    np.abs(self.ica.components_[n])
-            ):
-                ic_components.ix[i, n] = j
-        return ic_components
 
     def _fit_transform(self):
         """
@@ -75,7 +54,7 @@ class _ICAPlotter():
         decomposer = FastICA(algorithm=self.algorithm, random_state = self.random_state)
         icacomp = decomposer.fit_transform(self.expt.counts.data.T)
         icacomp = pd.DataFrame(icacomp, index=self.expt.counts.data.columns)
-        return decomposer, icacomp
+        return icacomp
 
     def _columnsource(self):
         """

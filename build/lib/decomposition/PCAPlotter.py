@@ -3,43 +3,50 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.decomposition import FastICA
+from sklearn.decomposition import PCA
 from bokeh.models import ColumnDataSource
-
+import seaborn as sns
 import color_helpers as ch
+import numpy as np
+import pandas as pd
 
 __all__ = []
 __version__ = 0.1
-__date__ = '2017-2-13'
-__updated__ = '2017-2-13'
+__date__ = '2015-12-19'
+__updated__ = '2015-12-19'
 
 
-class _ICAPlotter():
+class _PCAPlotter():
 
-    def __init__(self, expt, cmap = 'Purples',
-                 algorithm = 'parallel', random_state = 1):
+    def __init__(self, expt, cmap = 'Purples'):
         """
 
         Parameters
         ----------
-        expt : Experiment
-        cmap : basestring
-        method : basestring
-            gradient calculation algorithm
-            @see TSNE(method)
-        random_state : int
-            tsne random state for tsne seed generator
-            @see TSNE(random_state)
-        """
+        data : pandas.DataFrame
+            A table of gene expression in the format (genes, samples)
+        cmap : matplotlib.colors.Colormap
+            colormap instance corresponding to the name
 
-        self.algorithm = algorithm
-        self.random_state = random_state
+        Attributes
+        ----------
+        self.cmap : matplotlib.colors.Colormap
+            colormap instance corresponding to the name
+        self.expt : Experiment.Experiment
+            object containing info about the decomposition expt. This
+            includes: self.expt.counts (counts table or matrix to be fitted)
+            and self.expt.metadata (labels specifying the grouping of each
+            column).
+        self.pca : sklearn.decomposition.PCA
+        self.source : bokeh.models.ColumnDataSource
+
+        """
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-        self.ica, self.icacomp = self._fit_transform()
+        self.pca, self.prcomp = self._fit_transform()
         self.source = self._columnsource()
 
-    def get_independent_components(self):
+    def get_pc_components(self):
         """
         Returns a DataFrame of how much each feature contributes to the PC.
 
@@ -48,19 +55,19 @@ class _ICAPlotter():
         pc_components : pandas.DataFrame
 
         """
-        ic_cols = range(len(self.ica.components_))
-        ic_components = pd.DataFrame(
+        pc_cols = range(len(self.pca.components_))
+        pc_components = pd.DataFrame(
             index=self.expt.counts.data.index,
-            columns=ic_cols
+            columns=pc_cols
         )
 
-        for n in range(0, len(self.ica.components_)):
+        for n in range(0, len(self.pca.components_)):
             for i, j in zip(
                     self.expt.counts.data.index,
-                    np.abs(self.ica.components_[n])
+                    np.abs(self.pca.components_[n])
             ):
-                ic_components.ix[i, n] = j
-        return ic_components
+                pc_components.ix[i, n] = j
+        return pc_components
 
     def _fit_transform(self):
         """
@@ -72,13 +79,15 @@ class _ICAPlotter():
             table containing principle components ordered by variance
         """
 
-        decomposer = FastICA(algorithm=self.algorithm, random_state = self.random_state)
-        icacomp = decomposer.fit_transform(self.expt.counts.data.T)
-        icacomp = pd.DataFrame(icacomp, index=self.expt.counts.data.columns)
-        return decomposer, icacomp
+        smusher = PCA()
+        prcomp = smusher.fit_transform(self.expt.counts.data.T)
+        prcomp = pd.DataFrame(prcomp, index=self.expt.counts.data.columns)
+
+        return smusher, prcomp
 
     def _columnsource(self):
         """
+        Creates and returns the ColumnDataSource object needed by Bokeh plots.
 
         Returns
         -------
@@ -86,17 +95,17 @@ class _ICAPlotter():
             Object which allows set_color() method to
             interactively update colors in bokeh.
         """
-
         self.expt.metadata['hex'] = ch.expr_series_to_hex(
             self.expt.metadata['color'],
             self.cmap,
             is_norm=True
         )
+
         return ColumnDataSource(
             data=dict(
-                x=self.icacomp[0],
-                y=self.icacomp[1],
-                idx=self.icacomp.index,
+                x=self.prcomp[0],
+                y=self.prcomp[1],
+                idx=self.prcomp.index,
                 fill_color=self.expt.metadata['hex'],
             )
         )
@@ -116,13 +125,15 @@ class _ICAPlotter():
         if ax is None:
             ax = plt.gca()
 
+        colors = sns.color_palette(
+            "hls", len(set(self.expt.metadata['color']))
+        )
+        i = 0
         for c in set(self.expt.metadata['condition']):
-            indices = self.icacomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
-            color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
-            rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
-
-            ax.scatter(indices[0], indices[1], label=c, color=rgbs)
+            indices = self.prcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
+            ax.scatter(indices[0], indices[1], label=c, color=colors[i])
+            i += 1
 
     def _bokeh(self, ax):
         """
@@ -135,9 +146,11 @@ class _ICAPlotter():
         -------
 
         """
-        ax.scatter('x', 'y', radius=0.1,
+        print(ax)
+        ax.scatter('x', 'y', radius=0.2,
                    fill_color='fill_color', fill_alpha=0.6,
                    line_color=None, source=self.source)
+
     def set_color(self, gene_id):
         """
         Updates self.ColumnDataSource 'fill_color' column to interactively
@@ -153,13 +166,13 @@ class _ICAPlotter():
         -------
 
         """
+        print('setting color')
         self.expt.recolor(gene_id)
         self.expt.metadata['hex'] = ch.expr_series_to_hex(
             self.expt.metadata['color'],
             self.cmap,
             is_norm=True
         )
-
         self.source.data['fill_color'] = self.expt.metadata['hex']
 
     def plot(self, bokeh=False, ax=None):
@@ -183,7 +196,8 @@ class _ICAPlotter():
     def update_cmap(self):
         pass
 
-def icaplot(expt, cmap, ax=None, bokeh=False):
+
+def pcaplot(expt, cmap, ax=None, bokeh=False):
     """
 
     Parameters
@@ -201,6 +215,6 @@ def icaplot(expt, cmap, ax=None, bokeh=False):
     _PCAPlotter object
 
     """
-    plotter = _ICAPlotter(expt, cmap)
+    plotter = _PCAPlotter(expt, cmap)
     plotter.plot(bokeh=bokeh, ax=ax)
     return plotter

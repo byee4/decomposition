@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 from argparse import ArgumentParser
 from argparse import RawDescriptionHelpFormatter
 
-from decomposition import PCAPlotter
-from decomposition import TSNEPlotter
-from decomposition import ICAPlotter
-from decomposition import color_helpers as ch
-from decomposition import Experiment
+import PCAPlotter
+import TSNEPlotter
+import ICAPlotter
+import color_helpers as ch
+from Experiment import Experiment
 
 DEBUG = 0
 TESTRUN = 0
@@ -150,7 +150,7 @@ def main(argv=None):  # IGNORE:C0111
 
     """ read in counts file """
     logger.info(sys.argv)
-    experiment = Experiment.Experiment(
+    experiment = Experiment(
         counts_file=counts_file,
         conditions_file=conditions_file,
         conditions_col=conditions_col,
@@ -225,10 +225,6 @@ def main(argv=None):  # IGNORE:C0111
             cmap,
             ax=ax, bokeh=False)
         plotter.prcomp.to_csv(prefix + '.pcacomp.txt', sep=SEP)
-        if keep_intermediates:
-            plotter.get_pc_components().to_csv(
-                prefix + '.prcomp.txt', sep=SEP
-            )
     elif algorithm == 'TSNE':
         plotter = TSNEPlotter.tsneplot(
             experiment,
@@ -241,10 +237,6 @@ def main(argv=None):  # IGNORE:C0111
             cmap,
             ax=ax, bokeh=False)
         plotter.icacomp.to_csv(prefix + '.icacomp.txt', sep=SEP)
-        if keep_intermediates:
-            plotter.get_independent_components().to_csv(
-                prefix + '.icomp.txt', sep=SEP
-            )
     else:
         print("invalid algorithm. Exiting..")
         sys.exit(1)

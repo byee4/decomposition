@@ -10,7 +10,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "PCA",
+    name = "decompose",
     version = "0.0.1",
     author = "Brian",
     author_email="byee4@jhu.edu",
@@ -24,7 +24,7 @@ setup(
         "Topic :: Utilities",
         "License :: OSI Approved :: BSD License",
     ],
-    packages=['decomposition'],
+    packages=find_packages(), # ['decomposition'],
     package_dir={'decomposition': 'decomposition/'},
     include_package_data=True,
     install_requires=[
@@ -35,5 +35,9 @@ setup(
         'seaborn>=0.7',
         'bokeh>=0.10.0'
     ],
-
+    entry_points = {
+        'console_scripts': [
+            'decompose = decomposition.decompose:main'
+        ]
+    }
 )

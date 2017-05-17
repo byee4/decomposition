@@ -3,7 +3,7 @@ import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.decomposition import FastICA
+from sklearn.manifold import TSNE
 from bokeh.models import ColumnDataSource
 
 import color_helpers as ch
@@ -14,10 +14,10 @@ __date__ = '2017-2-13'
 __updated__ = '2017-2-13'
 
 
-class _ICAPlotter():
+class _TSNEPlotter():
 
     def __init__(self, expt, cmap = 'Purples',
-                 algorithm = 'parallel', random_state = 1):
+                 method = 'exact', random_state = 1):
         """
 
         Parameters
@@ -31,36 +31,14 @@ class _ICAPlotter():
             tsne random state for tsne seed generator
             @see TSNE(random_state)
         """
-
-        self.algorithm = algorithm
+        self.method = method
         self.random_state = random_state
         self.cmap = plt.get_cmap(cmap)
         self.expt = expt
-        self.ica, self.icacomp = self._fit_transform()
+        self.tcomp = self._fit_transform()
         self.source = self._columnsource()
 
-    def get_independent_components(self):
-        """
-        Returns a DataFrame of how much each feature contributes to the PC.
 
-        Returns
-        -------
-        pc_components : pandas.DataFrame
-
-        """
-        ic_cols = range(len(self.ica.components_))
-        ic_components = pd.DataFrame(
-            index=self.expt.counts.data.index,
-            columns=ic_cols
-        )
-
-        for n in range(0, len(self.ica.components_)):
-            for i, j in zip(
-                    self.expt.counts.data.index,
-                    np.abs(self.ica.components_[n])
-            ):
-                ic_components.ix[i, n] = j
-        return ic_components
 
     def _fit_transform(self):
         """
@@ -72,10 +50,10 @@ class _ICAPlotter():
             table containing principle components ordered by variance
         """
 
-        decomposer = FastICA(algorithm=self.algorithm, random_state = self.random_state)
-        icacomp = decomposer.fit_transform(self.expt.counts.data.T)
-        icacomp = pd.DataFrame(icacomp, index=self.expt.counts.data.columns)
-        return decomposer, icacomp
+        manifolder = TSNE(method=self.method, random_state = self.random_state)
+        tcomp = manifolder.fit_transform(self.expt.counts.data.T)
+        tcomp = pd.DataFrame(tcomp, index=self.expt.counts.data.columns)
+        return tcomp
 
     def _columnsource(self):
         """
@@ -94,9 +72,9 @@ class _ICAPlotter():
         )
         return ColumnDataSource(
             data=dict(
-                x=self.icacomp[0],
-                y=self.icacomp[1],
-                idx=self.icacomp.index,
+                x=self.tcomp[0],
+                y=self.tcomp[1],
+                idx=self.tcomp.index,
                 fill_color=self.expt.metadata['hex'],
             )
         )
@@ -117,7 +95,7 @@ class _ICAPlotter():
             ax = plt.gca()
 
         for c in set(self.expt.metadata['condition']):
-            indices = self.icacomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
+            indices = self.tcomp.ix[self.expt.metadata[self.expt.metadata['condition'] == c].index]
 
             color = self.expt.metadata[self.expt.metadata['condition'] == c]['color']
             rgbs = [self.cmap(n / self.expt.metadata['color'].max()) for n in color]
@@ -183,7 +161,7 @@ class _ICAPlotter():
     def update_cmap(self):
         pass
 
-def icaplot(expt, cmap, ax=None, bokeh=False):
+def tsneplot(expt, cmap, ax=None, bokeh=False):
     """
 
     Parameters
@@ -201,6 +179,6 @@ def icaplot(expt, cmap, ax=None, bokeh=False):
     _PCAPlotter object
 
     """
-    plotter = _ICAPlotter(expt, cmap)
+    plotter = _TSNEPlotter(expt, cmap)
     plotter.plot(bokeh=bokeh, ax=ax)
     return plotter
