@@ -54,7 +54,7 @@ class _ICAPlotter():
             index=self.expt.counts.data.index,
             columns=ic_cols
         )
-
+        print(ic_components.shape)
         for n in range(0, len(self.ica.components_)):
             for i, j in zip(
                     self.expt.counts.data.index,
