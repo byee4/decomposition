@@ -2,6 +2,7 @@ import matplotlib
 
 matplotlib.use('Agg')
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.decomposition import FastICA
 from bokeh.models import ColumnDataSource
@@ -60,6 +61,7 @@ class _ICAPlotter():
                     np.abs(self.ica.components_[n])
             ):
                 ic_components.ix[i, n] = j
+
         return ic_components
 
     def _fit_transform(self):
