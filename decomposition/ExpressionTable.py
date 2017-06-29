@@ -151,7 +151,8 @@ class FeatureCountsTable(ExpressionTable):
         counts_file : basestring
             featureCounts counts.txt
         """
-        counts = pd.read_table(counts_file, index_col=0, skiprows=1)
+        counts = pd.read_table(counts_file, index_col=0, comment='#')
+        # counts = pd.read_table(counts_file, index_col=0, skiprows=1)
         self.data = counts.ix[:,5:]
         self.length = counts['Length']
 
